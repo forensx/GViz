@@ -1,3 +1,0 @@
-This is a test. This is on line 1.
-
-This is still in test.txt, but on line 2.
