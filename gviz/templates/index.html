@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
     <head>
         <title>GViz: Genome Visualizer</title>
     </head>
@@ -13,13 +14,12 @@
            <div id = 'content'>
                 <div id = 'file-upload-header'>
                         <p>
-                            Instructions: enter file upload-terminal
-                            instructions here for user to follow. Even though
-                            this couldn't be simpler.
+                            Locate the local directory containing all BED files
+                            you wish to analyze.
                         </p>
                    </div>
-                <div id = 'upload-terminal btn btn-primary btn-sm float-left'>
-                    <span>Choose file</span>
+                <div id = 'upload-terminal'>
+                    <p>Choose directory</p>
                     <input type="file" webkitdirectory mozdirectory/>
                 </div>
                </div>
