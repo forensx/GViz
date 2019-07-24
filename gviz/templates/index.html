@@ -6,6 +6,17 @@
         <title>GViz: Genome Visualizer</title>
     </head>
    <body>
+       <p>	
+           {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+        </p>
        <div id = 'container'>
            <div id = 'header'>
                <h1>GViz: Genome Visualizer</h1>
@@ -18,10 +29,14 @@
                             this couldn't be simpler.
                         </p>
                    </div>
+                   <form method="POST" action="/">
                 <div id = 'upload-terminal btn btn-primary btn-sm float-left'>
                     <span>Choose file</span>
                     <input type="file" webkitdirectory mozdirectory/>
+                    
                 </div>
+                <input type="submit" value="Submit">
+            </form>
                </div>
            </div>
            <div id = 'footer'>
