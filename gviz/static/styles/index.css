@@ -53,8 +53,17 @@ body {
 }
 
 #header {
-    color: white;
-    text-align: center;
+	color: white;
+	padding-top: 38%;
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+#header h1 {
+	font-size: 62px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 #content {
@@ -62,22 +71,31 @@ body {
 }
 
 #file-upload-header {
-    width: 180px;
-    float: left;
+    width: 300px;
+	float: left;
+}
+
+#file-upload-header p{
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-size: 20px;
 }
 
 #upload-terminal {
-    width: 600px;
-    float: right;
+    width: 400px;
+	float: right;
+}
+
+#upload-terminal p {
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-size: 20px;
 }
 
 #footer {
     clear: all;
     position:absolute;
-    bottom:0;
+	bottom:0;
+	margin-left: auto;
+	margin-right: 0;
  }
-
-#demo-link {
-    margin-left:auto;
-    margin-right:0;
-}
