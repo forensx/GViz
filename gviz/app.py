@@ -15,10 +15,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','BED'])
 
-
+"""
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+"""
 class folderUpload(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
@@ -27,7 +27,7 @@ class folderUpload(Resource):
         uploaded_files = request.files.getlist("fileList")
         print(uploaded_files)
         return str(uploaded_files)
-        """
+"""
         if 'fileList' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -43,7 +43,7 @@ class folderUpload(Resource):
         else:
             flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
             return redirect(request.url)
-        """
+"""
 
 class view(Resource):
     def get(self):
