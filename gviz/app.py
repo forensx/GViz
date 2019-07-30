@@ -9,7 +9,7 @@ app.secret_key = "khuta"
 
 api = Api(app)
 
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = 'uploads'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -24,10 +24,10 @@ class folderUpload(Resource):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('index.html'),headers)
     def post(self):
-        if 'file' not in request.files:
+        if 'fileList' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        file = request.files['file']
+        file = request.files['fileList']
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
@@ -35,7 +35,7 @@ class folderUpload(Resource):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             flash('File successfully uploaded')
-            return redirect('/view')
+            return redirect('/')
         else:
             flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
             return redirect(request.url)

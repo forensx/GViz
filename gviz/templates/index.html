@@ -2,6 +2,19 @@
 <html>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script>
+        document.getElementById("filepicker").addEventListener("change", function(event) {
+            let output = document.getElementById("listing");
+            let files = event.target.files;
+
+            for (let i=0; i<files.length; i++) {
+                let item = document.createElement("li");
+                item.innerHTML = files[i].webkitRelativePath;
+                output.appendChild(item);
+            };
+        }, false);
+
+    </script>
     <head>
         <title>GViz: Genome Visualizer</title>
     </head>
@@ -29,10 +42,11 @@
                             this couldn't be simpler.
                         </p>
                    </div>
-                   <form method="POST" action="/">
+                   <form method="POST" action="/" enctype='multipart/form-data'>
                 <div id = 'upload-terminal btn btn-primary btn-sm float-left'>
                     <span>Choose file</span>
-                    <input type="file" webkitdirectory mozdirectory/>
+                    <input type="file" id="filepicker" name="fileList" webkitdirectory multiple />
+                    <ul id="listing"></ul>
                     
                 </div>
                 <input type="submit" value="Submit">
