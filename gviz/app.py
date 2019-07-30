@@ -3,6 +3,7 @@ import os
 from flask_restful import Resource, Api, reqparse
 from werkzeug.utils import secure_filename
 import urllib.request
+import pandas as pd
 
 app = Flask(__name__)
 app.secret_key = "khuta"
@@ -13,20 +14,38 @@ UPLOAD_FOLDER = 'uploads'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','BED'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','BED','pptx','csv'])
 
-"""
+
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-"""
+
 class folderUpload(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('index.html'),headers)
     def post(self):
         uploaded_files = request.files.getlist("fileList")
-        print(uploaded_files)
-        return str(uploaded_files)
+        for file in uploaded_files:
+
+            df = pd.read_csv(file.stream)
+            return str(df.head(10))
+"""
+        if 'fileList' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        uploaded_files = request.files.getlist("fileList")
+        for file in uploaded_files:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                
+            else:
+                flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
+                return redirect(request.url)
+        flash('Files successfully uploaded')
+        return redirect('/')
+"""
 """
         if 'fileList' not in request.files:
             flash('No file part')
