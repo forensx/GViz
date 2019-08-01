@@ -4,6 +4,7 @@ from flask_restful import Resource, Api, reqparse
 from werkzeug.utils import secure_filename
 import urllib.request
 import pandas as pd
+import pybedtools
 
 app = Flask(__name__)
 app.secret_key = "khuta"

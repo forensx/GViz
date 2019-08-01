@@ -7,3 +7,4 @@ MarkupSafe==1.1.1
 Werkzeug==0.15.5
 Flask-Uploads==0.2.1
 Flask-RESTful==0.3.7
+pybedtools==0.8.0
